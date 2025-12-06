@@ -1,0 +1,9 @@
+class Solution:
+    # @param A : integer
+    # @return a strings
+    def solve(self, A):
+        
+        res=1
+        for i in range(A,0,-1):
+            res=res*i
+        return res
