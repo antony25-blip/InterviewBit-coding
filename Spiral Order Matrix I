@@ -1,0 +1,29 @@
+class Solution:
+	# @param A : tuple of list of integers
+	# @return a list of integers
+	def spiralOrder(self, mat):
+        r=len(mat)
+        c=len(mat[0])
+        minrow=0
+        maxrow=r
+        mincol=0
+        maxcol=c
+        ar=[]
+        while(len(ar)<r*c):
+            if len(ar)<r*c:
+                for i in range(mincol,maxcol):
+                    ar.append(mat[minrow][i])
+                minrow+=1
+            if len(ar)<r*c:
+                for i in range(minrow,maxrow):
+                    ar.append(mat[i][maxcol-1])
+                maxcol-=1
+            if len(ar)<r*c:
+                for i in range(maxcol-1,mincol-1,-1):
+                    ar.append(mat[maxrow-1][i])
+                maxrow-=1
+            if len(ar)<r*c:
+                for i in range(maxrow-1,minrow-1,-1):
+                    ar.append(mat[i][mincol])
+                mincol+=1
+        return(ar)
