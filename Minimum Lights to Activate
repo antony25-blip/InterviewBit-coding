@@ -1,0 +1,23 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        n = len(A)
+        start = 0
+        count = 0
+        while start < n:
+            # rightmost light that can cover 'start' is at most start + (B-1)
+            # we search backwards from min(n-1, start + B - 1) to max(0, start - (B - 1))
+            right = min(n - 1, start + B - 1)
+            found = -1
+            for i in range(right, max(0, start - (B - 1)) - 1, -1):
+                if A[i] == 1:
+                    found = i
+                    break
+            if found == -1:
+                return -1
+            count += 1
+            # this light covers up to found + (B - 1)
+            start = found + B
+        return count
