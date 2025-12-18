@@ -1,0 +1,21 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def solve(self, a, b):
+        m=0
+        for i in range(b):
+            m+=a[i]
+            print(m)
+        l=len(a)
+        i=b-1
+        j=l-1
+        s=m
+        for x in range(b):
+            m-=a[i]
+            i-=1
+            m+=a[j]
+            j-=1
+            print(m)
+            s=max(s,m)
+        return s
