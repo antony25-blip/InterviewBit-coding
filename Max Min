@@ -1,0 +1,14 @@
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def solve(self, A):
+        a=A[0]
+        b=A[0]
+        sums=0
+        for i in range(len(A)):
+            if a>A[i]:
+                a=A[i]
+            elif b<A[i]:
+                b=A[i]
+        sums=a+b
+        return sums
