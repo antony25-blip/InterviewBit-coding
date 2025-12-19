@@ -1,0 +1,31 @@
+from bisect import bisect_left, insort
+
+class Solution:
+    def solve(self, A):
+        n = len(A)
+        if n < 3:
+            return 0
+        
+        # Step 1: Build suffix maximum array
+        rightMax = [0] * n
+        rightMax[-1] = A[-1]
+        for i in range(n - 2, -1, -1):
+            rightMax[i] = max(rightMax[i + 1], A[i])
+        
+        # Step 2: Maintain sorted list for left side
+        sorted_left = []
+        max_sum = 0
+        
+        for j in range(n):
+            # Find largest element smaller than A[j]
+            idx = bisect_left(sorted_left, A[j])
+            if idx > 0 and rightMax[j] > A[j]:
+                left_val = sorted_left[idx - 1]
+                right_val = rightMax[j]
+                max_sum = max(max_sum, left_val + A[j] + right_val)
+            
+            # Insert current element into sorted list
+            insort(sorted_left, A[j])
+        
+        return max_sum
+
