@@ -1,0 +1,19 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        a=max(A)
+        sums=a-B
+        flag=0
+        for i in range(len(A)):
+            if A[i]==sums:
+                flag+=1
+            elif A[i]+B==sums:
+                flag+=1
+            elif A[i]-B==sums:
+                flag+=1
+        if flag==len(A):
+            return 1
+        else: 
+            return 0
