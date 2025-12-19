@@ -1,0 +1,17 @@
+class Solution:
+    # @param A : list of integers
+    # @return a list of integers
+    def solve(self, A):
+        a=A[:]
+        z=0
+        o=len(A)-1
+        for i in range(len(A)):
+            if A[i]==0:
+                a[z]=A[i]
+                z+=1
+            else:
+                a[o]=A[i]
+                o-=1
+        return a
+                  
+        
