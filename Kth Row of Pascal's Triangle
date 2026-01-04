@@ -1,0 +1,6 @@
+from math import comb
+class Solution:
+    # @param A : integer
+    # @return a list of integers
+    def getRow(self, A):
+        return[comb(A,i) for i in range(A+1)]
