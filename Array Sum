@@ -1,0 +1,32 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @return a list of integers
+    def addArrays(self, A, B):
+        i,j=len(A)-1,len(B)-1
+        C=[]
+        carry=0
+        sums=0
+        while i>=0 or j>=0:
+            if(i>=0 and j>=0):
+                sums=A[i]+B[j]+carry
+                C.append(sums%10)
+                i-=1
+                j-=1
+                carry=sums//10
+            elif(i>=0):
+                sums=A[i]+carry
+                C.append(sums%10)                
+                i-=1
+                carry=sums//10
+            elif(j>=0):
+                sums=B[j]+carry
+                C.append(sums%10)                
+                j-=1
+                carry=sums//10
+        if carry!=0:
+            C.append(carry)
+        C.reverse()
+        return C
+                
+
