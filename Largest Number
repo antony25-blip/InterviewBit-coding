@@ -1,0 +1,8 @@
+class Solution:
+    # @param A : tuple of integers
+    # @return a strings
+    def largestNumber(self, A):
+        A = list(map(str, A))
+        A.sort(key=lambda x: x * 10, reverse=True)
+        result = "".join(A)
+        return "0" if result[0] == "0" else result
